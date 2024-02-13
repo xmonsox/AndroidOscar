@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pregunta1">second aplication</string>
+    <string name="pregunta2">title</string>
+    <string name="pregunta3">id</string>
+    <string name="pregunta4">name</string>
+    <string name="pregunta5">email</string>
+    <string name="pregunta6">REGISTRAR</string>
+    <string name="pregunta7">REGISTRAR</string>
+    <string name="pregunta8">REGISTRAR</string>
+    <string name="pregunta9">REGISTRAR</string>
+    <string name="pregunta10">REGISTRAR</string>
+    <string name="register">REGISTRAR</string>
+    <string name="pregunta1_opcion1">Si</string>
+    <string name="pregunta1_opcion2">NO</string>
+    <string name="app_name">preguntas</string>
+</resources>

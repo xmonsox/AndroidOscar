@@ -1,0 +1,16 @@
+<resources>
+    <string name="pregunta1">¿HTML es un lemguaje de programacion?</string>
+    <string name="pregunta2">¿Cuál es la montaña más alta del mundo?</string>
+    <string name="pregunta3">¿Qué país tiene la población más grande del mundo?</string>
+    <string name="pregunta4">¿Cuál es la capital de Francia?</string>
+    <string name="pregunta5">¿Cuál es el río más largo del mundo?</string>
+    <string name="pregunta6">¿Cuál es la montaña más alta del mundo?</string>
+    <string name="pregunta7">¿En qué año llegó el hombre a la luna por primera vez?</string>
+    <string name="pregunta8">¿Quién escribió Don Quijote de la Mancha?</string>
+    <string name="pregunta9">¿Qué país es conocido como la cuna de la civilización?</string>
+    <string name="pregunta10">¿Quién fue el primer presidente de los Estados Unidos?</string>
+    <string name="pregunta1_opcion1">Si</string>
+    <string name="pregunta1_opcion2">NO</string>
+    <string name="register">REGISTRAR</string>
+    <string name="app_name">preguntas</string>
+</resources>

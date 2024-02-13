@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QuintaActividad">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pregunta 05"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_6" />
+
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripcion:"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Cuál es el río más largo del mundo?"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        />
+
+
+
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Opciones:"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <RadioGroup
+        android:layout_marginTop="10dp"
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioButtonOption1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="El río Amazonas"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonOption2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" El río Nilo" />
+
+        <!-- Puedes agregar más RadioButtons aquí -->
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/registrar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:onClick="registrarPersona"
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
