@@ -49,14 +49,12 @@
             android:id="@+id/campo_nombres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/botones"
-            ></EditText>
+            android:backgroundTint="@color/botones"></EditText>
         <EditText
             android:id="@+id/campo_apellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/botones"
-            ></EditText>
+            android:backgroundTint="@color/botones"></EditText>
         <EditText
             android:id="@+id/campo_telefono"
             android:layout_width="match_parent"
@@ -76,7 +74,14 @@
             android:backgroundTint="@color/botones"
             ></EditText>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="update"
+            android:onClick="update"></Button>
+
     </LinearLayout>
+
 
 
 </LinearLayout>

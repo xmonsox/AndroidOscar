@@ -2,6 +2,7 @@ package com.example.crudoscar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -51,6 +52,7 @@ public class ActivityUpdate extends AppCompatActivity {
                     System.out.println("El servidor POST responde OK");
                     JSONObject jsonObject = new JSONObject(response);
                     System.out.println(response);
+                    getData(jsonObject);
                 } catch (JSONException e) {
                     System.out.println("El servidor POST responde con un error:");
                     System.out.println(e.getMessage());
@@ -73,20 +75,58 @@ public class ActivityUpdate extends AppCompatActivity {
 
         queue.add(solicitud);
     }
-
-        public void getClients(JSONObject data){
+        public void getData(JSONObject data){
             try {
                 JSONArray arreglo = data.getJSONArray("registros");
                     JSONObject client = arreglo.getJSONObject(0);
-                    String document =  client.getString("cedula");
-                    String first_name =  client.getString("nombres");
-                    String last_name = client.getString("apellidos");
-
-                    campo_nombre.setText(first_name);
-                    campo_apellido.setText(last_name);
+                    campo_nombre.setText(client.getString("nombres"));
+                    campo_apellido.setText(client.getString("apellidos"));
+                    campo_telefono.setText(client.getString("telefono"));
+                    campo_direccion.setText(client.getString("direccion"));
+                    campo_email.setText(client.getString("email"));
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
         }
+
+    public void update(View vista){
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        String url = "http://192.168.1.5/APIenPHP/Update.php";
+
+        StringRequest solicitud =  new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    System.out.println("El servidor POST responde OK");
+                    JSONObject jsonObject = new JSONObject(response);
+                    System.out.println(response);
+                    Intent intencion = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intencion);
+                } catch (JSONException e) {
+                    System.out.println("El servidor POST responde con un error:");
+                    System.out.println(e.getMessage());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("El servidor POST responde con un error:");
+                System.out.println(error.getMessage());
+            }
+        }){
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("cedula", campo_cedula.getText().toString());
+                params.put("nombres", campo_nombre.getText().toString());
+                params.put("apellidos", campo_apellido.getText().toString());
+                params.put("telefono", campo_telefono.getText().toString());
+                params.put("direccion", campo_direccion.getText().toString());
+                params.put("email", campo_email.getText().toString());
+
+                return params;
+            }
+        };
+        queue.add(solicitud);
+    }
 
 }
