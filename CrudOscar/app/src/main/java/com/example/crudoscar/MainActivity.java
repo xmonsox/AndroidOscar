@@ -17,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
     public void createView(View vista){
         Intent intencion = new Intent(getApplicationContext(), Activity_Create.class);
         startActivity(intencion);
-
+    }
+    public void readView(View vista){
+        Intent intencion = new Intent(getApplicationContext(), ActivityRead.class);
+        startActivity(intencion);
+    }
+    public void updateView(View vista){
+        Intent intencion = new Intent(getApplicationContext(), ActivityUpdate.class);
+        startActivity(intencion);
     }
 }

@@ -19,86 +19,101 @@
         android:gravity="center"
         >
     </TextView>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="562dp"
         android:gravity="center"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cedula"
-            android:textSize="25sp"
-            android:textStyle="bold"
             android:textColor="@color/letra"
-            >
-        </TextView>
+            android:textSize="25sp"
+            android:textStyle="bold"></TextView>
+
         <EditText
+            android:id="@+id/campo_cedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/botones"
-            ></EditText>
+            android:backgroundTint="@color/botones"></EditText>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombres"
             android:textSize="25sp"
-            android:textStyle="bold"
-            >
-        </TextView>
+            android:textStyle="bold"></TextView>
+
         <EditText
+            android:id="@+id/campo_nombres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/botones"></EditText>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Apellidos"
             android:textSize="25sp"
-            android:textStyle="bold"
-            >
-        </TextView>
+            android:textStyle="bold"></TextView>
+
         <EditText
+            android:id="@+id/campo_apellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/botones"></EditText>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Telefono"
             android:textSize="25sp"
-            android:textStyle="bold"
-            >
-        </TextView>
+            android:textStyle="bold"></TextView>
+
         <EditText
+            android:id="@+id/campo_telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/botones"></EditText>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Direccion"
             android:textSize="25sp"
-            android:textStyle="bold"
-            >
-        </TextView>
+            android:textStyle="bold"></TextView>
+
         <EditText
+            android:id="@+id/campo_direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/botones"></EditText>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"
             android:textSize="25sp"
-            android:textStyle="bold"
-            >
-        </TextView>
+            android:textStyle="bold"></TextView>
+
         <EditText
+            android:id="@+id/campo_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/botones"></EditText>
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_crear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/botones"
+        android:textSize="20sp"
+        android:onClick="insert"></Button>
 
 </LinearLayout>

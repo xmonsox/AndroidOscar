@@ -42,6 +42,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:backgroundTint="@color/botones"
+            android:onClick="readView"
             >
         </Button>
         <Button
@@ -52,6 +53,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:backgroundTint="@color/botones"
+            android:onClick="updateView"
             >
         </Button>
         <Button
