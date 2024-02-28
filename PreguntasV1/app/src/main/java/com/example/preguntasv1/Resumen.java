@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -78,11 +79,22 @@ public class Resumen extends AppCompatActivity {
                 String num_ok = cuest.getString("cant_ok");
                 String num_error = cuest.getString("cant_error");
 
+                Button detalle = new Button(getApplicationContext());
+                detalle.setText("Detalles");
 
+                detalle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intencion = new Intent(getApplicationContext(), DetalleCuestionario.class);
+                        intencion.putExtra("id", id);
+                        startActivity(intencion);
+                    }
+                });
+                detalle.setBackgroundColor(getColor(R.color.purple_200));
                 TextView tarjeta = new TextView(getApplicationContext());
                 tarjeta.setTextColor(Color.rgb(0,0,0));
-                tarjeta.setCompoundDrawablesWithIntrinsicBounds(R.drawable.border);
                 tarjeta.append("Número: " + id + "\n"+ " Fecha Inicio: " + fecha_inicio + "\n" + " N° Preguntas " + num_preguntas + "\n" + " N° OK: " + num_ok + "\n" + "N° Error: " + num_error);
+                linear.addView(detalle);
                 linear.addView(tarjeta);
 
                 System.out.println("Agregado: "+arreglo.toString());
