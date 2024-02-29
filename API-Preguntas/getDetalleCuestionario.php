@@ -14,9 +14,12 @@
 
 
         foreach ($preguntas as $key => $value) {
-            $consulta_opciones = $base_de_datos->query("SELECT * FROM opciones JOIN preguntas ON opciones.id_pregunta = preguntas.id JOIN respuestas ON respuestas.id_pregunta = preguntas.id WHERE id_cuestionario = ".$_GET['id_cuestionario']);
-            $opciones = $consulta_opciones->fetchAll(PDO::FETCH_ASSOC);
-            
+            $consulta_opciones = $base_de_datos->query("SELECT opciones.id, opciones.id_pregunta, opciones.descripcion
+                                FROM opciones 
+                                JOIN preguntas ON opciones.id_pregunta = preguntas.id 
+                                JOIN respuestas ON respuestas.id_pregunta = preguntas.id 
+                                WHERE opciones.id_pregunta = $key AND  id_cuestionario = ".$_GET['id_cuestionario']);
+            $opciones = $consulta_opciones->fetchAll(PDO::FETCH_ASSOC);            
             $temporal = [
                 'pregunta' => $value,
                 "opciones" => $opciones,
@@ -24,9 +27,6 @@
 
             array_push($resultado, $temporal);
         }
-
-        
-
 
         $respuesta = [
             'status' => true,

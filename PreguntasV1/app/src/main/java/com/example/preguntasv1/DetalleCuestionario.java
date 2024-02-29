@@ -2,19 +2,144 @@ package com.example.preguntasv1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.preguntasv1.utils.Config;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.sql.SQLOutput;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DetalleCuestionario extends AppCompatActivity {
-    TextView mostrar;
-    @Override
+    TextView mostrar_nombre;
+    LinearLayout linearResumen;
+    LinearLayout linearPreguntas;
+    Config config;
+    String id_usuario;
+    String id_cuestionario;
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_cuestionario);
-        Bundle datos = getIntent().getExtras();
-        String id = datos.getString("id");
+        config = new Config(getApplicationContext());
+        linearResumen = findViewById(R.id.linearResumen);
+        linearPreguntas = findViewById(R.id.linearPreguntas);
 
-        mostrar = findViewById(R.id.mostrar);
-        mostrar.setText(id);
+
+        SharedPreferences archivo = getSharedPreferences("app-preguntas", MODE_PRIVATE);
+        id_usuario = archivo.getString("id_usuario", null);
+        Bundle datos = getIntent().getExtras();
+        id_cuestionario = datos.getString("id");
+
+        mostrar_nombre= findViewById(R.id.mostrar_nombre);
+        mostrar_nombre.setText(archivo.getString("nombres", ""));
+
+        Date fecha_actual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+        String fechaFormateada = sdf.format(fecha_actual);
+
+        TextView fecha_inicio = new TextView(getApplicationContext());
+        fecha_inicio.setText("Fecha Inicio: " + fechaFormateada);
+        fecha_inicio.setTextColor(getColor(R.color.black));
+        linearResumen.addView(fecha_inicio);
+
+        ExtraerDetalleCuestionario();
+    }
+    public void ExtraerDetalleCuestionario(){
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        String url = config.getEndpoint("API-Preguntas/getDetalleCuestionario.php?id_cuestionario="+id_cuestionario);
+        JsonObjectRequest solicitud =  new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println("El servidor responde OK");
+                System.out.println(response.toString());
+
+                getDetalleCuestionarios(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("El servidor responde con un error:");
+                System.out.println(error.getMessage());
+            }
+        });
+
+        queue.add(solicitud);
+    }
+    public void getDetalleCuestionarios(JSONObject data){
+        try {
+            JSONArray arreglo = data.getJSONArray("respuestas");
+
+            //etq_clients.setText("");
+            for (int i=0;i<arreglo.length();i++){
+                JSONObject detalleCues = arreglo.getJSONObject(i);
+                JSONObject pregunt = detalleCues.getJSONObject("pregunta");
+                JSONArray opci = detalleCues.optJSONArray("opciones");
+                String id =  pregunt.getString("id");
+                String descripcion =  pregunt.getString("descripcion");
+                for (int j = 0; j < opci.length() ; j++) {
+                    JSONObject obje = opci.getJSONObject(j);
+                    String descr =  obje.getString("descripcion");
+                }
+
+
+
+                /*String id_correcta = detalleCues.getString("id_correcta");
+                String url_image = detalleCues.getString("url_image");
+                String respuesta = detalleCues.getString("respuesta");
+                String estado = detalleCues.getString("estado");*/
+
+
+                Integer variable = arreglo.length();
+                TextView preguntas = new TextView(getApplicationContext());
+                TextView correctas = new TextView(getApplicationContext());
+                TextView incorrectas = new TextView(getApplicationContext());
+                TextView preguntas_opciones = new TextView(getApplicationContext());
+
+
+                preguntas.setTextColor(Color.rgb(0,0,0));
+                preguntas.append("Preguntas: "  + variable);
+                correctas.append("Correctas: "  );
+                incorrectas.append("Incorrectas: ");
+
+                System.out.println( id +" "+descripcion);
+                preguntas_opciones.append("Pregunta: 1" + "\n" + descripcion + "\n");
+
+                linearResumen.addView(preguntas);
+                linearResumen.addView(correctas);
+                linearResumen.addView(incorrectas);
+                linearPreguntas.addView(preguntas_opciones);
+                for (int j = 0; j < opci.length() ; j++) {
+                    JSONObject obje = opci.getJSONObject(j);
+                    String descr =  obje.getString("descripcion");
+
+                    TextView opci_1 = new TextView(getApplicationContext());
+
+                    opci_1.append("- " + descr);
+                    linearPreguntas.addView(opci_1);
+                }
+
+            }
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

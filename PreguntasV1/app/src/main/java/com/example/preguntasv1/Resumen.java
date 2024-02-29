@@ -43,8 +43,8 @@ public class Resumen extends AppCompatActivity {
         SharedPreferences archivo = getSharedPreferences("app-preguntas", MODE_PRIVATE);
         id_usuario = archivo.getString("id_usuario", null);
         linear = findViewById(R.id.linearview);
-        nombresitos.setText(archivo.getString("nombres", ""));
-        read();
+       nombresitos.setText(archivo.getString("nombres", ""));
+       read();
     }
     public void read(){
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
@@ -91,6 +91,7 @@ public class Resumen extends AppCompatActivity {
                     }
                 });
                 detalle.setBackgroundColor(getColor(R.color.purple_200));
+
                 TextView tarjeta = new TextView(getApplicationContext());
                 tarjeta.setTextColor(Color.rgb(0,0,0));
                 tarjeta.append("Número: " + id + "\n"+ " Fecha Inicio: " + fecha_inicio + "\n" + " N° Preguntas " + num_preguntas + "\n" + " N° OK: " + num_ok + "\n" + "N° Error: " + num_error);
