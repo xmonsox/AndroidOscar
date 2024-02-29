@@ -2,38 +2,41 @@
 	header("Access-Control-Allow-Origin: * "); // Permite el acceso desde cualquier origen, o usa "http://localhost" si solo quieres permitirlo desde localhost.
 	header("Access-Control-Allow-Methods: GET, POST");
 	header("Access-Control-Allow-Headers: Content-Type");
-
     include 'Conexion.php';
-
     if (!empty($_GET['id_cuestionario'])) {
-
-        $resultado = [];
-
-	    $consulta_preguntas = $base_de_datos->query("SELECT preguntas.id, preguntas.descripcion, preguntas.id_correcta, preguntas.url_imagen, respuestas.respuesta, respuestas.estado FROM preguntas JOIN respuestas ON preguntas.id = respuestas.id_pregunta WHERE id_cuestionario = ".$_GET['id_cuestionario']);
+	    $consulta_preguntas = $base_de_datos->prepare("SELECT * FROM respuestas WHERE id_cuestionario = " .$_GET['id_cuestionario']);
+        $consulta_preguntas->execute();
         $preguntas = $consulta_preguntas->fetchAll(PDO::FETCH_ASSOC);
-
-
-        foreach ($preguntas as $key => $value) {
-            $consulta_opciones = $base_de_datos->query("SELECT opciones.id, opciones.id_pregunta, opciones.descripcion
-                                FROM opciones 
-                                JOIN preguntas ON opciones.id_pregunta = preguntas.id 
-                                JOIN respuestas ON respuestas.id_pregunta = preguntas.id 
-                                WHERE opciones.id_pregunta = $key AND  id_cuestionario = ".$_GET['id_cuestionario']);
-            $opciones = $consulta_opciones->fetchAll(PDO::FETCH_ASSOC);            
-            $temporal = [
-                'pregunta' => $value,
-                "opciones" => $opciones,
+        if($preguntas){
+            $respuesta = [
+                'status' => true,
+                'message' => 'melo',
+                'respuesta' => []
             ];
+            foreach ($preguntas as $pregunta) {
+                $id_respuesta = $pregunta['id_pregunta'];
+                $consulta_pregunta = $base_de_datos->prepare("SELECT preguntas.id, preguntas.descripcion, preguntas.id_correcta, preguntas.url_imagen, respuestas.id_respuesta, respuestas.estado 
+                                                                FROM preguntas 
+                                                                JOIN respuestas ON respuestas.id_pregunta = preguntas.id
+                                                                WHERE id= :id_resp");
+                $consulta_pregunta->bindParam(':id_resp', $id_respuesta);
+                $consulta_pregunta->execute();
+                $pregunta = $consulta_pregunta->fetch(PDO::FETCH_ASSOC);
+                
+                if($pregunta){
+                    $opciones = $base_de_datos->prepare("SELECT * FROM opciones WHERE id_pregunta= :id_resp" );
+                    $opciones->bindParam(':id_resp', $id_respuesta);
+                    $opciones->execute();
+                    $opcion = $opciones->fetchAll(PDO::FETCH_ASSOC);
 
-            array_push($resultado, $temporal);
+                    $respuesta['respuesta'][] = [
+                        'pregunta' => $pregunta,
+                        'opciones' => $opcion
+                    ];
+                }
+            }    
+            echo json_encode($respuesta);
         }
-
-        $respuesta = [
-            'status' => true,
-            'respuestas' => $resultado,
-            
-        ];
-        echo json_encode($respuesta);
 	}else{
         $respuesta = [
                         'status' => false,
