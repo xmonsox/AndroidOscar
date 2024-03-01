@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,12 @@ public class DetalleCuestionario extends AppCompatActivity {
     LinearLayout linearPreguntas;
     Config config;
     String id_usuario;
+    Integer conteo_correctas = 0;
+    Integer conteo_incorrectas = 0;
+    TextView preguntas;
+    TextView correctas;
+    TextView incorrectas;
+    Integer variable;
     String id_cuestionario;
    @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class DetalleCuestionario extends AppCompatActivity {
 
         SharedPreferences archivo = getSharedPreferences("app-preguntas", MODE_PRIVATE);
         id_usuario = archivo.getString("id_usuario", null);
+
         Bundle datos = getIntent().getExtras();
         id_cuestionario = datos.getString("id");
 
@@ -86,60 +94,92 @@ public class DetalleCuestionario extends AppCompatActivity {
     }
     public void getDetalleCuestionarios(JSONObject data){
         try {
-            JSONArray arreglo = data.getJSONArray("respuestas");
+            JSONArray arreglo = data.getJSONArray("respuesta");
 
             //etq_clients.setText("");
             for (int i=0;i<arreglo.length();i++){
+
                 JSONObject detalleCues = arreglo.getJSONObject(i);
                 JSONObject pregunt = detalleCues.getJSONObject("pregunta");
                 JSONArray opci = detalleCues.optJSONArray("opciones");
+
+
                 String id =  pregunt.getString("id");
                 String descripcion =  pregunt.getString("descripcion");
-                for (int j = 0; j < opci.length() ; j++) {
-                    JSONObject obje = opci.getJSONObject(j);
-                    String descr =  obje.getString("descripcion");
-                }
+                String status = pregunt.getString("estado");
+                String respuest = pregunt.getString("respuesta");
 
 
-
-                /*String id_correcta = detalleCues.getString("id_correcta");
-                String url_image = detalleCues.getString("url_image");
-                String respuesta = detalleCues.getString("respuesta");
-                String estado = detalleCues.getString("estado");*/
+                //System.out.println("Estado : "+status);
+                //System.out.println("Respuesta "+respuest);
 
 
-                Integer variable = arreglo.length();
-                TextView preguntas = new TextView(getApplicationContext());
-                TextView correctas = new TextView(getApplicationContext());
-                TextView incorrectas = new TextView(getApplicationContext());
+                variable = arreglo.length();
+                preguntas = new TextView(getApplicationContext());
+                correctas = new TextView(getApplicationContext());
+                incorrectas = new TextView(getApplicationContext());
                 TextView preguntas_opciones = new TextView(getApplicationContext());
 
 
                 preguntas.setTextColor(Color.rgb(0,0,0));
-                preguntas.append("Preguntas: "  + variable);
-                correctas.append("Correctas: "  );
-                incorrectas.append("Incorrectas: ");
+                preguntas_opciones.setTextSize(15);
+                preguntas_opciones.setTypeface(preguntas.getTypeface(), Typeface.BOLD);
+                preguntas_opciones.setTextColor(Color.rgb(0,0,0));
 
-                System.out.println( id +" "+descripcion);
-                preguntas_opciones.append("Pregunta: 1" + "\n" + descripcion + "\n");
 
-                linearResumen.addView(preguntas);
-                linearResumen.addView(correctas);
-                linearResumen.addView(incorrectas);
+                //System.out.println( id +" "+descripcion);
+                preguntas_opciones.append("Pregunta: "+ i + "\n" + descripcion + "\n");
+
                 linearPreguntas.addView(preguntas_opciones);
+
+
                 for (int j = 0; j < opci.length() ; j++) {
                     JSONObject obje = opci.getJSONObject(j);
                     String descr =  obje.getString("descripcion");
+                    //String id_op = obje.getString("id");
 
                     TextView opci_1 = new TextView(getApplicationContext());
-
+                    opci_1.setTextColor(Color.rgb(0,0,0));
                     opci_1.append("- " + descr);
+
+                    opci_1.setTextSize(15);
+                    opci_1.setTypeface(preguntas.getTypeface(), Typeface.ITALIC);
+
+                    System.out.println("Descr " + descr + " " + respuest);
+
+                    if (status.equalsIgnoreCase("OK") && descr.equalsIgnoreCase(respuest)){
+
+                        opci_1.setTextColor(Color.rgb(0,255,0));
+                        correctas.setTextColor(Color.rgb(0,255,0));
+                        conteo_correctas +=1;
+                        //System.out.println("Entre a verde "+ respuest);
+
+                    } else if (status.equalsIgnoreCase("ERROR") && descr.equalsIgnoreCase(respuest)) {
+
+                        opci_1.setTextColor(Color.rgb(255,0,0));
+                        incorrectas.setTextColor(Color.rgb(255,0,0));
+                        conteo_incorrectas+=1;
+                        //System.out.println("Entre a rojo "+ respuest);
+
+                    }
+
                     linearPreguntas.addView(opci_1);
                 }
-
             }
+            preguntas.append("Preguntas: "  + variable);
+            correctas.append("Correctas: "  + conteo_correctas);
+            incorrectas.append("Incorrectas: " + conteo_incorrectas);
+
+            linearResumen.addView(preguntas);
+            linearResumen.addView(correctas);
+            linearResumen.addView(incorrectas);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void backView(View vista){
+        Intent intencion = new Intent(getApplicationContext(), Resumen.class);
+        startActivity(intencion);
+        finish();
     }
 }

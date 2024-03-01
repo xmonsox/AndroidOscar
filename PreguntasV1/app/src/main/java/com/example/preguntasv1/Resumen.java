@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -31,6 +32,7 @@ public class Resumen extends AppCompatActivity {
     Config config;
     LinearLayout linear;
     String id_usuario;
+    String names;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class Resumen extends AppCompatActivity {
 
         SharedPreferences archivo = getSharedPreferences("app-preguntas", MODE_PRIVATE);
         id_usuario = archivo.getString("id_usuario", null);
+        names = archivo.getString("nombres", null);
         linear = findViewById(R.id.linearview);
        nombresitos.setText(archivo.getString("nombres", ""));
        read();
@@ -91,12 +94,16 @@ public class Resumen extends AppCompatActivity {
                     }
                 });
                 detalle.setBackgroundColor(getColor(R.color.purple_200));
+                detalle.setGravity(Gravity.CENTER);
+                detalle.setPadding(0,0,0,0);
 
                 TextView tarjeta = new TextView(getApplicationContext());
                 tarjeta.setTextColor(Color.rgb(0,0,0));
+                tarjeta.setBackgroundResource(R.drawable.border);
                 tarjeta.append("Número: " + id + "\n"+ " Fecha Inicio: " + fecha_inicio + "\n" + " N° Preguntas " + num_preguntas + "\n" + " N° OK: " + num_ok + "\n" + "N° Error: " + num_error);
-                linear.addView(detalle);
+
                 linear.addView(tarjeta);
+                linear.addView(detalle);
 
                 System.out.println("Agregado: "+arreglo.toString());
             }
@@ -114,6 +121,22 @@ public class Resumen extends AppCompatActivity {
 
         editor.commit();
         Intent intencion = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intencion);
+        finish();
+    }
+    public void newCuestionario(View vista){
+        //abriendo el archivo de persistencia y almacenar datos de usuario
+        SharedPreferences archivo = getSharedPreferences("app-preguntas", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = archivo.edit();
+
+        editor.putString("id_usuario", id_usuario);
+        editor.putString("nombres", names);
+
+        editor.commit();
+
+
+        Intent intencion = new Intent(getApplicationContext(), NewCuest.class);
         startActivity(intencion);
         finish();
     }

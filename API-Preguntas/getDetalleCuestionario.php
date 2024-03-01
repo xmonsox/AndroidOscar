@@ -10,21 +10,21 @@
         if($preguntas){
             $respuesta = [
                 'status' => true,
-                'message' => 'melo',
+                'message' => 'OK',
                 'respuesta' => []
             ];
             foreach ($preguntas as $pregunta) {
                 $id_respuesta = $pregunta['id_pregunta'];
-                $consulta_pregunta = $base_de_datos->prepare("SELECT preguntas.id, preguntas.descripcion, preguntas.id_correcta, preguntas.url_imagen, respuestas.id_respuesta, respuestas.estado 
+                $consulta_pregunta = $base_de_datos->prepare("SELECT preguntas.id, preguntas.descripcion, preguntas.id_correcta, preguntas.url_imagen, respuestas.id_respuesta, respuestas.respuesta, respuestas.estado 
                                                                 FROM preguntas 
                                                                 JOIN respuestas ON respuestas.id_pregunta = preguntas.id
                                                                 WHERE id= :id_resp");
                 $consulta_pregunta->bindParam(':id_resp', $id_respuesta);
                 $consulta_pregunta->execute();
                 $pregunta = $consulta_pregunta->fetch(PDO::FETCH_ASSOC);
-                
+
                 if($pregunta){
-                    $opciones = $base_de_datos->prepare("SELECT * FROM opciones WHERE id_pregunta= :id_resp" );
+                    $opciones = $base_de_datos->prepare("SELECT * FROM opciones WHERE id_pregunta= :id_resp");
                     $opciones->bindParam(':id_resp', $id_respuesta);
                     $opciones->execute();
                     $opcion = $opciones->fetchAll(PDO::FETCH_ASSOC);
@@ -46,4 +46,4 @@
                     ];
         echo json_encode($respuesta);
     }
-?>
+?>  

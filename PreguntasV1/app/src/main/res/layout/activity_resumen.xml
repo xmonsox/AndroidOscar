@@ -32,14 +32,19 @@
             android:textSize="20sp"
             android:textStyle="bold"
             ></TextView>
-        <LinearLayout
-            android:id="@+id/linearview"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="50dp"
-            ></LinearLayout>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linearview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
+                ></LinearLayout>
+        </ScrollView>
+
 
     </LinearLayout>
 
@@ -51,6 +56,16 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="15dp"
         android:backgroundTint="@color/obeso"
+        android:textSize="20sp"
+        ></Button>
+    <Button
+        android:onClick="newCuestionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuevo"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/normal"
         android:textSize="20sp"
         ></Button>
 </FrameLayout>
