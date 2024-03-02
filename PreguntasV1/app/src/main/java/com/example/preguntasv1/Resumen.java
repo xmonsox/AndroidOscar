@@ -1,5 +1,7 @@
 package com.example.preguntasv1;
 
+import static android.view.ViewGroup.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -9,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,16 +77,49 @@ public class Resumen extends AppCompatActivity {
         try {
             JSONArray arreglo = data.getJSONArray("cuestionarios");
             //etq_clients.setText("");
-            for (int i=0;i<arreglo.length();i++){
+            for (int i = 0; i < arreglo.length(); i++) {
                 JSONObject cuest = arreglo.getJSONObject(i);
-                String id =  cuest.getString("id");
-                String fecha_inicio =  cuest.getString("fecha_inicio");
+                String id = cuest.getString("id");
+                String fecha_inicio = cuest.getString("fecha_inicio");
                 String num_preguntas = cuest.getString("cant_preguntas");
                 String num_ok = cuest.getString("cant_ok");
                 String num_error = cuest.getString("cant_error");
 
+                // Crear la CardView
+                CardView cardView = new CardView(getApplicationContext());
+                LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                cardParams.setMargins(0, 0, 0, 32); // Aumentar el margen inferior para separación
+                cardView.setLayoutParams(cardParams);
+                cardView.setCardBackgroundColor(getResources().getColor(android.R.color.white)); // Color de fondo
+                cardView.setRadius(8); // Radio de las esquinas
+                cardView.setCardElevation(20); // Elevación
+
+                // Crear el LinearLayout interno para el contenido de la tarjeta
+                LinearLayout innerLayout = new LinearLayout(getApplicationContext());
+                innerLayout.setOrientation(LinearLayout.VERTICAL);
+                innerLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                innerLayout.setPadding(16, 16, 16, 16);
+
+                // Crear el TextView dentro de la CardView
+                TextView tarjeta = new TextView(getApplicationContext());
+                tarjeta.setTextColor(Color.rgb(0, 0, 0));
+                //tarjeta.setBackgroundResource(R.drawable.border);
+                tarjeta.setPadding(16, 16, 16, 16);
+                tarjeta.setText("Número: " + id + "\n" + " Fecha Inicio: " + fecha_inicio + "\n" + " N° Preguntas " + num_preguntas + "\n" + " N° OK: " + num_ok + "\n" + "N° Error: " + num_error);
+
+                // Crear el Button dentro de la CardView
                 Button detalle = new Button(getApplicationContext());
                 detalle.setText("Detalles");
+                detalle.setBackgroundColor(getColor(R.color.morado_claro));
+                LinearLayout.LayoutParams detalleParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                detalleParams.gravity = Gravity.CENTER;
+                detalle.setLayoutParams(detalleParams);
 
                 detalle.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -93,19 +129,16 @@ public class Resumen extends AppCompatActivity {
                         startActivity(intencion);
                     }
                 });
-                detalle.setBackgroundColor(getColor(R.color.purple_200));
-                detalle.setGravity(Gravity.CENTER);
-                detalle.setPadding(0,0,0,0);
 
-                TextView tarjeta = new TextView(getApplicationContext());
-                tarjeta.setTextColor(Color.rgb(0,0,0));
-                tarjeta.setBackgroundResource(R.drawable.border);
-                tarjeta.append("Número: " + id + "\n"+ " Fecha Inicio: " + fecha_inicio + "\n" + " N° Preguntas " + num_preguntas + "\n" + " N° OK: " + num_ok + "\n" + "N° Error: " + num_error);
+                // Agregar el TextView y el Button al LinearLayout interno
+                innerLayout.addView(tarjeta);
+                innerLayout.addView(detalle);
 
-                linear.addView(tarjeta);
-                linear.addView(detalle);
+                // Agregar el LinearLayout interno a la CardView
+                cardView.addView(innerLayout);
 
-                System.out.println("Agregado: "+arreglo.toString());
+                // Agregar la CardView al LinearLayout contenedor
+                linear.addView(cardView);
             }
         } catch (JSONException e) {
             throw new RuntimeException(e);
@@ -140,4 +173,5 @@ public class Resumen extends AppCompatActivity {
         startActivity(intencion);
         finish();
     }
+
 }

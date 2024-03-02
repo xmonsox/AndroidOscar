@@ -32,6 +32,7 @@ public class NewCuest extends AppCompatActivity {
     String id_user;
     String fechaFormateada;
     String name;
+    String guardar_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class NewCuest extends AppCompatActivity {
         id_user = archivo.getString("id_usuario", null);
         name = archivo.getString("nombres", null);
 
-
+        guardar_id = id_user;
         //Extraer Fecha
         Date fecha_actual = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
@@ -73,6 +74,12 @@ public class NewCuest extends AppCompatActivity {
                     System.out.println("El servidor POST responde OK");
                     JSONObject jsonObject = new JSONObject(response);
                     System.out.println(response);
+                    Intent intencion = new Intent(getApplicationContext(), Pregunta.class);
+                    intencion.putExtra("id_user" , guardar_id);
+                    intencion.putExtra("name", name);
+
+                    startActivity(intencion);
+                    finish();
                 } catch (JSONException e) {
                     System.out.println("El servidor POST responde con un error:");
                     System.out.println(e.getMessage());
@@ -99,4 +106,5 @@ public class NewCuest extends AppCompatActivity {
         };
         queue.add(solicitud);
     }
+
 }

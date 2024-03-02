@@ -1,6 +1,7 @@
 package com.example.preguntasv1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,7 +44,9 @@ public class DetalleCuestionario extends AppCompatActivity {
     TextView incorrectas;
     Integer variable;
     String id_cuestionario;
-   @Override
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_cuestionario);
@@ -66,7 +70,7 @@ public class DetalleCuestionario extends AppCompatActivity {
 
         TextView fecha_inicio = new TextView(getApplicationContext());
         fecha_inicio.setText("Fecha Inicio: " + fechaFormateada);
-        fecha_inicio.setTextColor(getColor(R.color.black));
+        fecha_inicio.setTextColor(getColor(R.color.Negro));
         linearResumen.addView(fecha_inicio);
 
         ExtraerDetalleCuestionario();
@@ -79,6 +83,7 @@ public class DetalleCuestionario extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println("El servidor responde OK");
                 System.out.println(response.toString());
+
 
                 getDetalleCuestionarios(response);
             }
@@ -113,6 +118,23 @@ public class DetalleCuestionario extends AppCompatActivity {
                 //System.out.println("Estado : "+status);
                 //System.out.println("Respuesta "+respuest);
 
+                CardView cardView = new CardView(getApplicationContext());
+                LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                cardParams.setMargins(0, 0, 0, 16); // Aumentar el margen inferior para separación entre tarjetas
+                cardView.setLayoutParams(cardParams);
+                cardView.setCardBackgroundColor(getResources().getColor(android.R.color.white)); // Color de fondo
+                cardView.setRadius(8); // Radio de las esquinas
+                cardView.setCardElevation(20); // Elevación
+
+                LinearLayout innerLayout = new LinearLayout(getApplicationContext());
+                innerLayout.setOrientation(LinearLayout.VERTICAL);
+                innerLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                innerLayout.setPadding(16, 16, 16, 16);
+
 
                 variable = arreglo.length();
                 preguntas = new TextView(getApplicationContext());
@@ -122,28 +144,30 @@ public class DetalleCuestionario extends AppCompatActivity {
 
 
                 preguntas.setTextColor(Color.rgb(0,0,0));
-                preguntas_opciones.setTextSize(15);
-                preguntas_opciones.setTypeface(preguntas.getTypeface(), Typeface.BOLD);
-                preguntas_opciones.setTextColor(Color.rgb(0,0,0));
+                preguntas_opciones.setTextColor(Color.rgb(0, 0, 0));
+                preguntas_opciones.setTextSize(18); // Tamaño del texto de la pregunta
+                preguntas_opciones.setText("Pregunta: " + i + "\n" + descripcion + "\n");
 
 
                 //System.out.println( id +" "+descripcion);
-                preguntas_opciones.append("Pregunta: "+ i + "\n" + descripcion + "\n");
 
-                linearPreguntas.addView(preguntas_opciones);
+
+                innerLayout.addView(preguntas_opciones);
 
 
                 for (int j = 0; j < opci.length() ; j++) {
                     JSONObject obje = opci.getJSONObject(j);
                     String descr =  obje.getString("descripcion");
+
                     //String id_op = obje.getString("id");
 
                     TextView opci_1 = new TextView(getApplicationContext());
-                    opci_1.setTextColor(Color.rgb(0,0,0));
-                    opci_1.append("- " + descr);
+                    opci_1.setTextColor(Color.rgb(0, 0, 0));
+                    opci_1.setText("- " + descr);
+                    opci_1.setTextSize(15); // Tamaño del texto de la opción
+                    opci_1.setTypeface(null, Typeface.ITALIC); // Establecer estilo de letra
+                    opci_1.setPadding(0, 0, 0, 8); // Agregar un pequeño espacio inferior entre las opciones
 
-                    opci_1.setTextSize(15);
-                    opci_1.setTypeface(preguntas.getTypeface(), Typeface.ITALIC);
 
                     System.out.println("Descr " + descr + " " + respuest);
 
@@ -152,6 +176,7 @@ public class DetalleCuestionario extends AppCompatActivity {
                         opci_1.setTextColor(Color.rgb(0,255,0));
                         correctas.setTextColor(Color.rgb(0,255,0));
                         conteo_correctas +=1;
+
                         //System.out.println("Entre a verde "+ respuest);
 
                     } else if (status.equalsIgnoreCase("ERROR") && descr.equalsIgnoreCase(respuest)) {
@@ -159,12 +184,15 @@ public class DetalleCuestionario extends AppCompatActivity {
                         opci_1.setTextColor(Color.rgb(255,0,0));
                         incorrectas.setTextColor(Color.rgb(255,0,0));
                         conteo_incorrectas+=1;
+
                         //System.out.println("Entre a rojo "+ respuest);
 
                     }
 
-                    linearPreguntas.addView(opci_1);
+                    innerLayout.addView(opci_1);
                 }
+                cardView.addView(innerLayout);
+                linearPreguntas.addView(cardView);
             }
             preguntas.append("Preguntas: "  + variable);
             correctas.append("Correctas: "  + conteo_correctas);

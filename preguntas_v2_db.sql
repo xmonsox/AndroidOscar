@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2024 a las 15:01:35
+-- Tiempo de generación: 02-03-2024 a las 01:15:22
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.1.25
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,25 @@ INSERT INTO `cuestionarios` (`id`, `id_usuario`, `cant_preguntas`, `cant_ok`, `c
 (1, 1, 0, 0, 0, '2024-01-25 20:32:56', NULL),
 (2, 1, 0, 0, 0, '2024-01-25 23:41:44', '2024-01-25 23:47:44'),
 (38, 1, 0, 0, 0, '2024-01-26 12:18:46', NULL),
-(39, 1, 0, 0, 0, '2024-01-26 12:26:09', NULL);
+(39, 1, 0, 0, 0, '2024-01-26 12:26:09', NULL),
+(40, 1, 0, 0, 0, '2024-03-01 17:38:30', '0000-00-00 00:00:00'),
+(41, 1, 0, 0, 0, '2024-03-01 17:51:38', '0000-00-00 00:00:00'),
+(42, 1, 0, 0, 0, '2024-03-01 17:51:46', '0000-00-00 00:00:00'),
+(43, 1, 0, 0, 0, '2024-03-01 17:52:35', '0000-00-00 00:00:00'),
+(44, 1, 0, 0, 0, '2024-03-01 17:53:22', '0000-00-00 00:00:00'),
+(45, 1, 0, 0, 0, '2024-03-01 18:02:13', '0000-00-00 00:00:00'),
+(46, 1, 0, 0, 0, '2024-03-01 18:03:07', '0000-00-00 00:00:00'),
+(47, 1, 0, 0, 0, '2024-03-01 18:16:27', '0000-00-00 00:00:00'),
+(48, 1, 0, 0, 0, '2024-03-01 18:21:11', '0000-00-00 00:00:00'),
+(49, 1, 0, 0, 0, '2024-03-01 18:21:53', '0000-00-00 00:00:00'),
+(50, 1, 0, 0, 0, '2024-03-01 18:23:53', '0000-00-00 00:00:00'),
+(51, 1, 0, 0, 0, '2024-03-01 18:24:42', '0000-00-00 00:00:00'),
+(52, 1, 0, 0, 0, '2024-03-01 18:28:13', '0000-00-00 00:00:00'),
+(53, 1, 0, 0, 0, '2024-03-01 18:32:00', '0000-00-00 00:00:00'),
+(54, 1, 0, 0, 0, '2024-03-01 18:35:51', '0000-00-00 00:00:00'),
+(55, 1, 0, 0, 0, '2024-03-01 18:37:20', '0000-00-00 00:00:00'),
+(56, 1, 0, 0, 0, '2024-03-01 18:40:12', '0000-00-00 00:00:00'),
+(57, 1, 0, 0, 0, '2024-03-01 18:43:08', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -65,34 +83,34 @@ CREATE TABLE `opciones` (
 
 INSERT INTO `opciones` (`id`, `id_pregunta`, `descripcion`) VALUES
 (1, 1, 'HyperText Markup Language'),
-(2, 1, 'Hyperlink '),
+(2, 1, 'Hyperlink Text Markup Language'),
 (3, 1, 'High-Level'),
 (4, 2, 'C'),
 (5, 2, 'C++'),
 (6, 2, 'Ruby'),
-(7, 3, 'Cascaded S'),
+(7, 3, 'Cascading Styling Sheets'),
 (8, 3, 'Cascading Style Sheets'),
 (9, 3, 'Cascaded S'),
 (10, 4, '->'),
 (11, 4, '='),
 (12, 4, '==='),
-(13, 5, 'Crear las '),
-(14, 5, 'Almacenar '),
+(13, 5, 'Crear las bases de datos'),
+(14, 5, 'Almacenar grandes cantidades de datos'),
 (15, 5, 'Lenguaje de consulta estructurada para gestionar bases de datos'),
-(16, 6, 'Modelo-Visa'),
+(16, 6, 'Modelo-Visa-Controlador'),
 (17, 6, 'Modelo-Vista-Controlador'),
-(18, 6, 'Microservi'),
+(18, 6, 'Microservices-Virtual Container'),
 (19, 7, 'Java'),
 (20, 7, 'PHP'),
 (21, 7, 'C'),
-(22, 8, 'Instrucción'),
+(22, 8, 'Instruccion de salida'),
 (23, 8, 'Estructura de control de iteración'),
-(24, 8, 'Comando de'),
+(24, 8, 'Comando de consola'),
 (25, 9, 'SVN'),
 (26, 9, 'Mercurial'),
 (27, 9, 'GitHub'),
-(28, 10, 'Un conjunt'),
-(29, 10, 'Un disposi'),
+(28, 10, 'Un conjunto de monedas'),
+(29, 10, 'Un dispositivo de almacenamiento de datos'),
 (30, 10, 'Un conjunto de instrucciones paso a paso para realizar una tarea'),
 (31, 9, 'Git');
 
@@ -153,9 +171,9 @@ INSERT INTO `respuestas` (`id_respuesta`, `id_cuestionario`, `id_pregunta`, `res
 (9, 2, 10, 'Un conjunto de instrucciones paso a paso para realizar una tarea', 'OK', '2024-01-25 23:44:35'),
 (44, 38, 6, 'Microservices-Virtual Container', 'ERROR', '2024-01-26 07:18:53'),
 (45, 38, 10, 'Un dispositivo de almacenamiento de datos', 'ERROR', '2024-01-26 07:18:55'),
-(46, 38, 8, 'InstrucciÃƒÂ³n de salida', 'ERROR', '2024-01-26 07:18:58'),
+(46, 38, 8, 'Instruccion de salida', 'ERROR', '2024-01-26 07:18:58'),
 (47, 38, 5, 'Almacenar grandes cantidades de datos', 'ERROR', '2024-01-26 07:19:01'),
-(48, 39, 6, 'MÃƒÂ¡quina Virtual de Control', 'ERROR', '2024-01-26 07:26:56'),
+(48, 39, 6, 'Maquina Virtual de Control', 'ERROR', '2024-01-26 07:26:56'),
 (49, 39, 10, 'Un dispositivo de almacenamiento de datos', 'ERROR', '2024-01-26 07:29:01'),
 (50, 39, 4, '==', 'ERROR', '2024-01-26 07:31:30'),
 (51, 39, 5, 'Almacenar grandes cantidades de datos', 'ERROR', '2024-01-26 07:32:29'),
@@ -232,7 +250,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cuestionarios`
 --
 ALTER TABLE `cuestionarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `opciones`
