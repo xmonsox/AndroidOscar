@@ -6,8 +6,10 @@
     include 'Conexion.php';
 
     if (!empty($_GET['id_usuario'])) {
-        $consulta = $base_de_datos->prepare("SELECT id_usuario, fecha_inicio 
+        $consulta = $base_de_datos->prepare("SELECT id_usuario, fecha_inicio, id
         FROM cuestionarios WHERE id_usuario = ? ORDER BY fecha_inicio DESC LIMIT 1");
+        
+        
         $consulta->execute(array($_GET['id_usuario']));
         $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
