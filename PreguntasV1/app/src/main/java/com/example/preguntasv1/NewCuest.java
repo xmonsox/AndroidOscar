@@ -79,7 +79,6 @@ public class NewCuest extends AppCompatActivity {
                     intencion.putExtra("name", name);
 
                     startActivity(intencion);
-                    finish();
                 } catch (JSONException e) {
                     System.out.println("El servidor POST responde con un error:");
                     System.out.println(e.getMessage());

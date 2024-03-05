@@ -68,12 +68,14 @@
 </LinearLayout>
 
     <Button
+        android:id="@+id/generarPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Siguiente"
         android:textStyle="bold"
         android:layout_gravity="bottom|center_horizontal"
         android:backgroundTint="@color/md_theme_dark_primaryContainer"
+        android:onClick="generarRandom"
         ></Button>
 
 </FrameLayout>

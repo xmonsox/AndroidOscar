@@ -4,7 +4,8 @@
 	header("Access-Control-Allow-Headers: Content-Type");
     include 'Conexion.php';
     if (!empty($_GET['id_cuestionario'])) {
-	    $consulta_preguntas = $base_de_datos->prepare("SELECT * FROM respuestas WHERE id_cuestionario = " .$_GET['id_cuestionario']);
+        $id_consulta = $_GET['id_cuestionario'];
+	    $consulta_preguntas = $base_de_datos->prepare("SELECT * FROM respuestas WHERE id_cuestionario = $id_consulta");
         $consulta_preguntas->execute();
         $preguntas = $consulta_preguntas->fetchAll(PDO::FETCH_ASSOC);
         if($preguntas){
@@ -18,7 +19,7 @@
                 $consulta_pregunta = $base_de_datos->prepare("SELECT preguntas.id, preguntas.descripcion, preguntas.id_correcta, preguntas.url_imagen, respuestas.id_respuesta, respuestas.respuesta, respuestas.estado 
                                                                 FROM preguntas 
                                                                 JOIN respuestas ON respuestas.id_pregunta = preguntas.id
-                                                                WHERE id= :id_resp");
+                                                                WHERE id= :id_resp AND respuestas.id_cuestionario = $id_consulta");
                 $consulta_pregunta->bindParam(':id_resp', $id_respuesta);
                 $consulta_pregunta->execute();
                 $pregunta = $consulta_pregunta->fetch(PDO::FETCH_ASSOC);
@@ -46,4 +47,4 @@
                     ];
         echo json_encode($respuesta);
     }
-?>  
+?>
