@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Pregunta">
+
+        <LinearLayout
+            android:id="@+id/linearDatos"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nombre_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Oscar Andres Loaiza Pabon"
+                android:textColor="@color/Negro"
+                android:textSize="25sp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/contadorPreguntas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/Negro"
+            >
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="----------------------------------------------------------------------------------------"></TextView>
+        <LinearLayout
+        android:id="@+id/linearPregunt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical"
+
+
+        >
+        <TextView
+            android:id="@+id/pregunt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pregunta"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/Negro"
+            ></TextView>
+            <ImageView
+                android:id="@+id/id_imagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                ></ImageView>
+        <RadioGroup
+            android:id="@+id/radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/Negro"
+            android:orientation="vertical">
+
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>
+
+    <Button
+        android:id="@+id/generarPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        android:textStyle="bold"
+        android:layout_gravity="bottom|center_horizontal"
+        android:backgroundTint="@color/md_theme_dark_primaryContainer"
+        android:onClick="generarRandom"
+        ></Button>
+
+</FrameLayout>
