@@ -1,21 +1,21 @@
 package com.example.pokemos;
 
 public class Pokemon {
-    Integer numero;
+    String numero;
     String nombre;
     String url;
 
-    public Pokemon(Integer numero, String nombre, String url) {
+    public Pokemon(String numero, String nombre, String url) {
         this.numero = numero;
         this.nombre = nombre;
         this.url = url;
     }
 
-    public Integer getNumero() {
+    public String  getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

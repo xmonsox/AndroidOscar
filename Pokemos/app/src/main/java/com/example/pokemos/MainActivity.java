@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -33,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recycler;
     ImageView loading;
-    Integer suma = 0;
+    String previus;
+    Button siguiente;
+    Button anterior;
+    String next;
+    int suma = 0;
+    int contadorL = 0;
+
     LinearLayout LinearMayor;
     AdaptadorNombres adaptador;
 
@@ -44,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         LinearMayor = findViewById(R.id.LinearMayor);
         recycler = findViewById(R.id.recycler_pokemones);
+        siguiente = findViewById(R.id.btnSiguiente);
+        anterior = findViewById(R.id.btnAnterior);
         loading = findViewById(R.id.loading_pokemon);
         Glide.with(this)
                 .asGif()
@@ -69,15 +78,20 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         loading.setVisibility(View.GONE);
                         try {
+                            previus = response.getString("previous");
+                            next = response.getString("next");
                             JSONArray resultados = response.getJSONArray("results");
                             for (int i = 0; i < resultados.length(); i++) {
                                 JSONObject pokemon = resultados.getJSONObject(i);
                                 String nombre = pokemon.getString("name");
                                 String url = pokemon.getString("url");
+                                String numero = "00"+(suma+i+1);
                                 System.out.println("Url Maurico " + url);
 
-                                adaptador.agregarNombrePokemon(nombre,url);
+
+                                adaptador.agregarNombrePokemon(numero,nombre,url);
                             }
+                            validar();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -94,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
         queue.add(solicitud);
     }
     public void siguiente(View vista){
-        suma += 20; // Incrementar el offset para cargar los siguientes 20 pokémon
         adaptador.clear();
+        suma += 20; // Incrementar el offset para cargar los siguientes 20 pokémon
         cargarDatos();
         loading.setVisibility(View.VISIBLE);
     }
@@ -108,5 +122,18 @@ public class MainActivity extends AppCompatActivity {
             loading.setVisibility(View.VISIBLE);
         }
     }
+    public void validar(){
+        if (previus.equalsIgnoreCase("null")){
+            anterior.setEnabled(false);
+        } else  {
+            anterior.setEnabled(true);
+        }
+        if (next.equalsIgnoreCase("null")){
+            siguiente.setEnabled(false);
+        } else  {
+            siguiente.setEnabled(true);
+        }
+    }
+
 
 }

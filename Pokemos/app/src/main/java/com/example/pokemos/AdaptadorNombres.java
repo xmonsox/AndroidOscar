@@ -2,6 +2,7 @@ package com.example.pokemos;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -39,18 +40,22 @@ public class AdaptadorNombres extends RecyclerView.Adapter<AdaptadorNombres.View
 
     private List<String> nombresPokemon;
     private List<String> urlPokemon;
+    private List<String> contador;
     private Context contexto;
 
     public AdaptadorNombres(Context contexto) {
         this.contexto = contexto;
         this.nombresPokemon = new ArrayList<>(); //Inicializo la lista de nombres de los pokemones
         this.urlPokemon = new ArrayList<>(); // Inicialice la lista
+        this.contador = new ArrayList<>();
     }
 
     //Metodo para agregar un nuevo nombre al adaptador
-    public void agregarNombrePokemon(String nombre, String url) {
+    public void agregarNombrePokemon(String numero,String nombre, String url) {
         nombresPokemon.add(nombre); //lo agrego a la lista
         urlPokemon.add(url);
+        contador.add(numero);
+
         notifyDataSetChanged();
     }
 
@@ -63,9 +68,12 @@ public class AdaptadorNombres extends RecyclerView.Adapter<AdaptadorNombres.View
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String nombrePokemon = nombresPokemon.get(position);
+        String contN = contador.get(position);
+        System.out.println("Yo" + contN);
         holder.name_pokemon.setText(nombrePokemon);
+        holder.numeroC.setText(contN);
 
         // Set click listener on ImageView (assuming it's present in item_nombres.xml)
         holder.imagen.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +90,6 @@ public class AdaptadorNombres extends RecyclerView.Adapter<AdaptadorNombres.View
                 Toast.makeText(contexto, "Se hizo clic en " + nombre, Toast.LENGTH_SHORT).show();
             }
         });
-        
     }
 
     @Override
@@ -93,6 +100,7 @@ public class AdaptadorNombres extends RecyclerView.Adapter<AdaptadorNombres.View
     public void clear() {
         nombresPokemon.clear();
         urlPokemon.clear();
+        contador.clear();
         notifyDataSetChanged();
     }
 
@@ -100,9 +108,11 @@ public class AdaptadorNombres extends RecyclerView.Adapter<AdaptadorNombres.View
 
         TextView name_pokemon;
         ImageView imagen;
+        TextView numeroC;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name_pokemon = itemView.findViewById(R.id.name_pokemon);
+            numeroC = itemView.findViewById(R.id.cont);
             imagen = itemView.findViewById(R.id.imagen);
         }
     }
