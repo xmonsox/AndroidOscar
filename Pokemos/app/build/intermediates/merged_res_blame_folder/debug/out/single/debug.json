@@ -1,0 +1,130 @@
+[
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-hdpi_ic_aplicacion_round.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-hdpi\\ic_aplicacion_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-anydpi-v26_ic_aplicacion_round.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-anydpi-v26\\ic_aplicacion_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable_icono_pokeball.png.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\drawable\\icono_pokeball.png"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable_loading_pokeball.gif.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\drawable\\loading_pokeball.gif"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\layout_item_imagenes_pokemon.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\layout\\item_imagenes_pokemon.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-hdpi_ic_aplicacion.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-hdpi\\ic_aplicacion.webp"
+    },
+    {
+        "merged": "com.example.pokemos.app-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "com.example.pokemos.app-main-34:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-hdpi_ic_aplicacion_foreground.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-hdpi\\ic_aplicacion_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable_ic_aplicacion_background.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\drawable\\ic_aplicacion_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xhdpi_ic_aplicacion_foreground.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xhdpi\\ic_aplicacion_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-pngs-28:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xxxhdpi_ic_aplicacion_round.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xxxhdpi\\ic_aplicacion_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-mdpi_ic_aplicacion_round.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-mdpi\\ic_aplicacion_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-anydpi-v26_ic_aplicacion.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-anydpi-v26\\ic_aplicacion.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable_titulo_pokemon.png.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\drawable\\titulo_pokemon.png"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xhdpi_ic_aplicacion_round.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xhdpi\\ic_aplicacion_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xxxhdpi_ic_aplicacion.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xxxhdpi\\ic_aplicacion.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xxhdpi_ic_aplicacion_foreground.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xxhdpi\\ic_aplicacion_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable_ic_button_drawable.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\drawable\\ic_button_drawable.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xxhdpi_ic_aplicacion.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xxhdpi\\ic_aplicacion.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\layout_item_info_hablidad.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\layout\\item_info_hablidad.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xhdpi_ic_aplicacion.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xhdpi\\ic_aplicacion.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xxxhdpi_ic_aplicacion_foreground.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xxxhdpi\\ic_aplicacion_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\layout_activity_detalle_pokemon.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\layout\\activity_detalle_pokemon.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-xxhdpi_ic_aplicacion_round.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-xxhdpi\\ic_aplicacion_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\layout_item_nombres.xml.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\layout\\item_nombres.xml"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-mdpi_ic_aplicacion_foreground.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-mdpi\\ic_aplicacion_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-merged_res-32:\\mipmap-mdpi_ic_aplicacion.webp.flat",
+        "source": "C:\\Users\\juand\\.gradle\\daemon\\8.2\\com.example.pokemos.app-main-34:\\mipmap-mdpi\\ic_aplicacion.webp"
+    }
+]
